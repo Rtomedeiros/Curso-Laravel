@@ -67,11 +67,13 @@ Route::prefix('admin')->group(function(){
 });
 */
 
+/*
 //Alterando a rota '/' para usar de exemplo para redirecionar usando o grupo de rotas vinculadas pelo nome. 
 //No exemplo, está redirecionando do '/' para o '/admin/clientes'
 Route::get('/', function () {
     return redirect()->route('admin.clientes');
 });
+*/
 
 /*
 //Criando grupos de rotas, vinculadas atraves do nome das rotas
@@ -90,6 +92,7 @@ Route::name('admin.')->group(function(){
 });
 */
 
+/*
 //Criando grupos de rotas, vinculadas de forma composta, usando por exemplo, prefix e name juntos
 Route::group([
     'prefix' => 'admin',
@@ -107,3 +110,18 @@ Route::group([
         return "clientes";
     })->name('clientes');
 });
+*/
+
+//Informando o Namespace do ProdutoController
+use App\Http\Controllers\ProdutoController;
+
+//Recriando a rota '/' para trabalhar com os controllers
+//Declarando o Controller e o método da classe
+//Recomendável nomear as rotas
+Route::get('/', [ProdutoController::class, 'index'])->name('produto.index');
+
+//Trabalhando com Parâmetros com o Controller
+//Criando uma rota com passagem de parâmetros para o Controller
+//O método declarado se chama 'show', para exibir os detalhes do Produto
+Route::get('/produto/{id?}', [ProdutoController::class, 'show'])->name('produto.show');
+//Deixando a passagem do parametro id na rota de forma opcional com a '?'
