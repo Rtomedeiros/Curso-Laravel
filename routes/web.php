@@ -113,15 +113,21 @@ Route::group([
 */
 
 //Informando o Namespace do ProdutoController
-use App\Http\Controllers\ProdutoController;
+//use App\Http\Controllers\ProdutoController;
 
 //Recriando a rota '/' para trabalhar com os controllers
 //Declarando o Controller e o método da classe
 //Recomendável nomear as rotas
-Route::get('/', [ProdutoController::class, 'index'])->name('produto.index');
+#Route::get('/', [ProdutoController::class, 'index'])->name('produto.index');
 
 //Trabalhando com Parâmetros com o Controller
 //Criando uma rota com passagem de parâmetros para o Controller
 //O método declarado se chama 'show', para exibir os detalhes do Produto
-Route::get('/produto/{id?}', [ProdutoController::class, 'show'])->name('produto.show');
+#Route::get('/produto/{id?}', [ProdutoController::class, 'show'])->name('produto.show');
 //Deixando a passagem do parametro id na rota de forma opcional com a '?'
+
+//Informando o novo Namespace do ProdutoController com Resource
+use App\Http\Controllers\ProdutoController;
+
+//Criando uma Rota para o Controller com Resource
+Route::resource('produtos', ProdutoController::class);
