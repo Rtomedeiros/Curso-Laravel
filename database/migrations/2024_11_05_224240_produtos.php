@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
+            //Inserindo duas colunas na tabela 'produtos'
+            $table->string('nomee');
+            $table->string('nomecompleto');
             $table->timestamps();
         });
     }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Str;
+//Definir o namespace para o prerequisito para modificar colunas nas tabelas do BD
+use Illuminate\Database\DBAL\TimestampType;
 
 return [
 
@@ -168,6 +170,13 @@ return [
             'database' => env('REDIS_CACHE_DB', '1'),
         ],
 
+    ],
+    
+    //Prerequisito para Modificar Colunas nas tabelas do BD
+    'dbal' => [
+        'types' => [
+            'timestamp' => TimestampType::class,
+        ],
     ],
 
 ];
