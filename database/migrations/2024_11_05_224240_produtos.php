@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            //Inserindo duas colunas na tabela 'produtos'
-            $table->string('nomee');
-            $table->string('nomecompleto');
+            //Inserindo colunas na tabela 'produtos'
+            $table->string('nome'); //Coluna nome do produto
+            $table->text('descricao');  //Coluna descricao do produto
+            $table->double('preco', 10, 2);  //Coluna preco do produto, '10, 2' representa as casas decimais do preco (valor tem 10 digitos, 2 deles estão a direita da vírgula)
+            $table->string('slug'); //Coluna slug do produto, um título para a URL!
+            
             $table->timestamps();
         });
     }
