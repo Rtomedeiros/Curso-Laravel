@@ -19,9 +19,14 @@ return new class extends Migration
             $table->double('preco', 10, 2);  //Coluna preco do produto, '10, 2' representa as casas decimais do preco (valor tem 10 digitos, 2 deles estão a direita da vírgula)
             $table->string('slug'); //Coluna slug do produto, um título para a URL!
             $table->string('imagem'); //Coluna caminho da imagem do produto
+            
             $table->unsignedBigInteger('id_user');  //Relacionamento com o usuário (1 usuário pode criar vários produtos)
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade'); //Definindo a chave estrangeira 'id_user'. Faz referência ao campo 'id' da tabela 'user'
             //Foi encadeado dois métodos onDelete('cascade') e onUpdate('cascade'), eles servem para Deletar e Atualizar os dados relacionados entre o usuário e o produto, caso o usuário é deletado ou atualizado, os produtos relacionados a ele tbm serão. Isto é para não ter registros orfãos no BD
+            
+            $table->unsignedBigInteger('id_categoria');  //Relacionamento com a tabela categoria
+            $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');  //Definindo a chave estrangeira 'id_categoria'
+            
             $table->timestamps();   //Cria duas Colunas na tabela, Created e Updated, uma com a data da criação de um registro e a outra com a data de atualização de um registro
         });
     }
